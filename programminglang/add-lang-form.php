@@ -26,7 +26,9 @@ crossorigin="anonymous">
 </div>
 <div class="mb-3">
 <label for="LangRating" class="form-label">Rating</label>
-<input type="number" class="form-control" id="LangRating" name="LangRating">
+<input type="number" class="form-control" id="LangRating" name="LangRating" step="0.1" 
+    min="0"
+    max="5">
 </div>
 <input type="submit" class="btn btn-primary" value="Add Langugae">
 </form>

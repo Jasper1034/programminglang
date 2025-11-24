@@ -4,7 +4,6 @@
   $lang_name = $_POST['LangName'];
   $lang_description = $_POST['LangDescription'];
   $lang_release_date = $_POST['DateReleased'];
-  // $lang_rating = $_POST['LangRating'];
   $lang_rating = floatval($_POST['LangRating']);
 
   

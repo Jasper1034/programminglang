@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Details for {{ language.lang_name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ language.lang_name }}</h1>
+    
+    {# Displaying the description and the back link #}
+    <p>{{ language.lang_description }}</p>
+    
+    <a href="index.php" class="btn btn-secondary">Back to list</a>
+{% endblock %}

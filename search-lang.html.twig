@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Search Results for "{{ keyword }}"{% endblock %}
+
+{% block content %}
+    <h1>Search results for: "{{ keyword }}"</h1>
+    <p>{{ count }} result(s) found.</p>
+
+    <table class="table table-dark table-striped table-hover">
+        <tr class="table-light">
+            <th>Lang ID</th>
+            <th>Lang Name</th>
+            <th>Ratings</th>
+            <th>Released Date</th>
+        </tr>
+        
+        {% for lang in languages %}
+        <tr>
+            <td>{{ lang.lang_id }}</td>
+            <td><a href="lang-details.php?id={{ lang.lang_id }}">{{ lang.lang_name }}</a></td>
+            <td>{{ lang.rating }}</td>
+            <td>{{ lang.released_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="index.php" class="btn btn-secondary">Back to List</a>
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Add a New Language{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Add a Programming language name</h1>
+    <form action="add-lang.php" method="post">
+        {# ... all your form fields here, identical to original HTML ... #}
+        <div class="mb-3">
+            <label for="LangName" class="form-label">Lang name</label>
+            <input type="text" class="form-control" id="LangName" name="LangName">
+        </div>
+        <div class="mb-3">
+            <label for="LangDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="LangDescription" name="LangDescription" rows="5"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="DateReleased" class="form-label">Date released</label>
+            <input type="date" class="form-control" id="DateReleased" name="DateReleased">
+        </div>
+        <div class="mb-3">
+            <label for="LangRating" class="form-label">Rating</label>
+            <input type="number" class="form-control" id="LangRating" name="LangRating" step="0.1" min="0" max="5">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Add Langugae">
+        <a href="index.php" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

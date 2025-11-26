@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{# Use the language name in the title #}
+{% block title %}Edit {{ language.lang_name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Edit Programming Language: {{ language.lang_name }}</h1>
+    <hr>
+
+    <form action="update-lang.php" method="post">
+        {# Hidden ID field is CRUCIAL for the update to work #}
+        <input type="hidden" name="LangID" value="{{ language.lang_id }}">
+
+        <div class="mb-3">
+            <label for="LangName" class="form-label">Lang name</label>
+            {# Pre-fill the input using the Twig variable #}
+            <input type="text" class="form-control" id="LangName" name="LangName" 
+                   value="{{ language.lang_name }}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="LangDescription" class="form-label">Description</label>
+            {# Pre-fill the textarea content #}
+            <textarea class="form-control" id="LangDescription" name="LangDescription" rows="5" required>{{ language.lang_description }}</textarea>
+        </div>
+        
+        <div class="mb-3">
+            <label for="DateReleased" class="form-label">Date released</label>
+            {# Pre-fill the date input #}
+            <input type="date" class="form-control" id="DateReleased" name="DateReleased" 
+                   value="{{ language.released_date }}">
+        </div>
+        
+        <div class="mb-3">
+            <label for="LangRating" class="form-label">Rating</label>
+            {# Pre-fill the rating input #}
+            <input type="number" class="form-control" id="LangRating" name="LangRating" 
+                   step="0.1" min="0" max="5" value="{{ language.rating }}">
+        </div>
+
+        <input type="submit" class="btn btn-warning" value="Update Language">
+        <a href="index.php" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

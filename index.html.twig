@@ -9,13 +9,16 @@
 
     <h1>List of ALL my Languages!!!</h1>
 
-    {# Search Form (HTML remains mostly the same) #}
-    <form action="search-lang.php" method="post">
-        <div class="Search-button">
-            <input type="text" name="keywords" placeholder="Search">
-            <input type="submit" class="btn btn-primary" value="Go!">
-        </div>
-    </form>
+   <div class="container">
+        <form class="row g-3">
+            <div class="col-auto">
+                <input type="text" class="form-control" id="searchBox" placeholder="Start typing keywords...">
+            </div>
+        </form>
+        <p id="results"></p>
+
+    
+    </div>
 
     {# Table using Twig's {% for %} loop #}
     <table class="table table-dark table-striped table-hover">
@@ -46,4 +49,68 @@
 
     <a href="add-lang-form.php" class="btn btn-primary">Add a Lang</a>
 
+    
+<script>
+    // 1. Define the core AJAX logic function (Globally available)
+    function doSearch() {
+        // Find elements inside the function to be safe
+        const searchBox = document.getElementById("searchBox");
+        const resultsArea = document.getElementById("results");
+        
+        if (!searchBox || !resultsArea) return; 
+
+        // Get the value and remove leading/trailing whitespace
+        const keywords = searchBox.value.trim(); 
+
+        // 🛑 STEP 1: HIDE RESULTS IF SEARCH BOX IS EMPTY 🛑
+        if (keywords.length === 0) {
+            resultsArea.innerHTML = ''; // Clear the results area
+            return; // **STOP EXECUTION HERE**
+        }
+
+        // STEP 2: IF KEYWORDS EXIST, RUN SEARCH
+        resultsArea.innerHTML = 'Searching...'; 
+
+        // Use encodeURIComponent for safety, though not strictly required here
+        fetch('ajax.php?search=' + encodeURIComponent(keywords)) 
+        
+        .then(response => response.json())
+        
+        .then(data => {
+            resultsArea.innerHTML = ''; // Clear 'Searching...'
+            
+            if (data.length > 0) {
+                let output = "Found: ";
+                data.forEach(lang => {
+                    output += `${lang.lang_name} | `; 
+                });
+                resultsArea.innerHTML = output;
+            } else {
+                resultsArea.innerHTML = "No languages found matching your query.";
+            }
+        })
+        .catch(error => {
+            console.error('AJAX Fetch Error:', error);
+            resultsArea.innerHTML = `Error: Failed to fetch data.`;
+        });
+    }
+
+    // 2. Attach the listener once the DOM is ready (the most reliable method)
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchBox = document.getElementById("searchBox");
+        if (searchBox) {
+            // Attach the globally defined function
+            searchBox.addEventListener("keyup", doSearch);
+        }
+    });
+</script>
+
 {% endblock %}
+
+
+
+
+
+
+
+

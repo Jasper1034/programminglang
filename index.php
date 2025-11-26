@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php
 // --- 1. SETUP: Include the Twig setup first ---
 // This guarantees the $twig object is created BEFORE it is used.
@@ -32,7 +16,7 @@ echo $twig->render('index.html.twig', [
     'languages' => $languages,
 ]);
 
-// Note: The rest of the original HTML (head, body, table structure, etc.) 
+// Note: The rest of the original HTML (head, body, table structure, etc.)
 // is now contained entirely in layout.html.twig and index.html.twig.
 
 ?>

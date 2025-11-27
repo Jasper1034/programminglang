@@ -10,7 +10,6 @@ $loader = new \Twig\Loader\FilesystemLoader('.');
 // 3. Create the Twig Environment. This initializes the $twig object.
 // Make sure this is in the global scope if you are using 'include()'.
 $twig = new \Twig\Environment($loader, [
-    // You can add options here, but for now, this is enough.
 ]);
 ?>
 

@@ -1,10 +1,9 @@
-{# 1. Extend the master layout we created in Step 1 #}
-{% extends 'layout.html.twig' %}
+{% extends 'layout.twig' %}
 
-{# 2. Fill the title block #}
+{# Fill the title block #}
 {% block title %}Programming Languages List{% endblock %}
 
-{# 3. Fill the content block with the rest of the HTML #}
+{# Fill the content block with the rest of the HTML #}
 {% block content %}
 
     <h1>List of ALL my Languages!!!</h1>
@@ -16,8 +15,6 @@
             </div>
         </form>
         <p id="results"></p>
-
-    
     </div>
 
     {# Table using Twig's {% for %} loop #}
@@ -51,7 +48,7 @@
 
     
 <script>
-    // 1. Define the core AJAX logic function (Globally available)
+    // Define the core AJAX logic function (Globally available)
     function doSearch() {
         // Find elements inside the function to be safe
         const searchBox = document.getElementById("searchBox");
@@ -62,13 +59,13 @@
         // Get the value and remove leading/trailing whitespace
         const keywords = searchBox.value.trim(); 
 
-        // 🛑 STEP 1: HIDE RESULTS IF SEARCH BOX IS EMPTY 🛑
+        // HIDE RESULTS IF SEARCH BOX IS EMPTY 
         if (keywords.length === 0) {
             resultsArea.innerHTML = ''; // Clear the results area
-            return; // **STOP EXECUTION HERE**
+            return; // STOP EXECUTION HERE
         }
 
-        // STEP 2: IF KEYWORDS EXIST, RUN SEARCH
+        // IF KEYWORDS EXIST, RUN SEARCH
         resultsArea.innerHTML = 'Searching...'; 
 
         // Use encodeURIComponent for safety, though not strictly required here
@@ -95,7 +92,7 @@
         });
     }
 
-    // 2. Attach the listener once the DOM is ready (the most reliable method)
+    // Attach the listener once the DOM is ready
     document.addEventListener('DOMContentLoaded', function () {
         const searchBox = document.getElementById("searchBox");
         if (searchBox) {

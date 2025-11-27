@@ -1,7 +1,7 @@
 <?php
 // Connect to database and run SQL query
 include("db.php");
-// Is a keyword provided in the URL?
+// Is a keyword provided in the URL
 if(isset($_GET['search']))
 $sql = "SELECT * FROM programminglang WHERE lang_name LIKE '%{$_GET['search']}%'
 ORDER BY released_date";

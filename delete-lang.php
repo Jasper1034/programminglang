@@ -3,7 +3,6 @@
   // Read values from the URL
   $lang_id = $_GET['id'];
   
-  // Connect to database
   include("db.php");
   
   // Define SQL query
@@ -14,7 +13,6 @@
       echo("<h4>SQL error description: " . $mysqli -> error . "</h4>");
   }
   
-  // Redirect to list
   header("location: index.php");  
   
 ?>

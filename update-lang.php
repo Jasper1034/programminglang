@@ -1,6 +1,6 @@
 <?php
   
-  include("db.php");
+  include("db.php"); // connect the database with php
 
   // Read values from the form (using $_POST) 
   // The ID is essential to know WHICH record to update
